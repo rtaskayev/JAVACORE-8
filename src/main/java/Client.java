@@ -8,7 +8,7 @@ public class Client {
 
     public static void main(String[] args) {
 
-        String host = "localhost";
+        String host = "netology.homework";
         int port = 8081;
 
         {
@@ -16,15 +16,17 @@ public class Client {
                 Socket clientSocket = new Socket(host, port);
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                out.println("Test Netology connection");
-                String resp = in.readLine();
-                System.out.println(resp);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                System.out.println(in.readLine());
+                out.println(reader.readLine());
+                System.out.println(in.readLine());
+                out.println(reader.readLine());
+                System.out.println(in.readLine());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
     }
-
 
 }
