@@ -12,11 +12,11 @@ public class Client {
         int port = 8081;
 
         {
-            try {
-                Socket clientSocket = new Socket(host, port);
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            try  (Socket clientSocket = new Socket(host, port);
+                  PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                  BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                  BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+
                 System.out.println(in.readLine());
                 out.println(reader.readLine());
                 System.out.println(in.readLine());
